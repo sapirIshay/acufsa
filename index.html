@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <style>
+html, body{
+    height: 100%;
+    width: 100%;
+    margin:0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+/* Video styles */
+#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 0.22fr 0.78fr 0.22fr;
+  gap: 10px;
+  height: 100vh;
+  position: relative;
+}
+
+/* Add moving stars background */
+.grid-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,244,120,0.4), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.1), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255,244,120,0.3), transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: sparkle 4s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes sparkle {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-200px); }
+}
+
+.grid-item {
+  background-color: transparent;
+  border: 0px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.grid-logo-item{
+  background-color: transparent;
+  border: 0px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.logo_pic{
+    margin-top: auto;
+    width: 28vh;
+    height: 13vh;
+}
+
+.grid-item-stations{
+  background-color: transparent;
+  border: 0px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10vh;
+  font-family: "Gveret Levin AlefAlefAlef";
+  color: white;
+  text-align: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.grid-item-stations p {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Video Grid Container */
+.video-grid-container {
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 30px;
+  padding: 60px;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.video-block {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.video-block video {
+  width: 100%;
+  flex: 1;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Sets and Reps Display */
+.sets-reps {
+  background: rgba(0,0,0,0.8);
+  color: #fff478;
+  font-family: "Gveret Levin AlefAlefAlef", Arial, sans-serif;
+  font-size: 3vh;
+  font-weight: bold;
+  text-align: center;
+  padding: 1vh;
+  text-shadow: 0 0 1vh rgba(255,255,255,0.5);
+  border-top: 2px solid rgba(255,244,120,0.3);
+  min-height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Label (e.g. תחנה, סט) */
+.label {
+  font-size: 10vh;
+  text-shadow: lemonchiffon 0px 0 10px;
+  font-weight: bold;
+  font-family: "Gveret Levin AlefAlefAlef";
+  color: white;
+  font-weight: 400;
+}
+
+/* Value (e.g. 5, 1) */
+.value {
+  font-size: 15vh;
+  color: #fff478;
+  font-weight: bold;
+  opacity: 0.9;
+}
+
+/*timer - Enhanced and LARGE with VH units*/
+#countdown {
+  position: relative;
+  margin: auto;
+  margin-top: 5vh;
+  height: 25vh;
+  width: 25vh;
+  text-align: center;
+}
+
+#countdown-number {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25vh;
+  height: 25vh;
+  font-size: 8vh;
+  font-weight: bold;
+  z-index: 2;
+  text-shadow: 
+    0 0 2vh rgba(255,255,255,0.8),
+    0 0 4vh rgba(255,244,120,0.6),
+    0 0.3vh 0.6vh rgba(0,0,0,0.5);
+  animation: numberPulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes numberPulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    100% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25vh;
+  height: 25vh;
+  transform: rotateY(-180deg) rotateZ(-90deg);
+  z-index: 1;
+  filter: drop-shadow(0 0 1.5vh rgba(255,255,255,0.7));
+}
+
+svg circle {
+  stroke-dasharray: 66vh;
+  stroke-dashoffset: 0vh;
+  stroke-linecap: round;
+  stroke-width: 0.5vh;
+  stroke: url(#gradient);
+  fill: none;
+  animation: countdown 90s linear infinite forwards;
+}
+
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0vh;
+  }
+  to {
+    stroke-dashoffset: 66vh;
+  }
+}
+    </style>
+    <link href="https://db.onlinewebfonts.com/c/2f01ce81ad5d2852012b2d6f46443bf6?family=Gveret+Levin+AlefAlefAlef" rel="stylesheet">
+    </head>
+    <body>
+    <!-- Video background -->
+    <video autoplay muted loop id="bg-video">
+    <source src="https://cdn.dribbble.com/userupload/16909493/file/original-e6c90943d3d9da57b997c2898244009e.mp4" type="video/mp4">
+    </video>
+
+    <div class="grid-container">
+        <div class="grid-logo-item">
+            <img src="./pics/logo.png" class="logo_pic" alt="Logo">
+        </div>
+        
+        <!-- Video Grid Container -->
+        <div class="video-grid-container">
+            <div class="video-block">
+                <video autoplay muted loop playsinline>
+                    <source src="./videos/video0.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="sets-reps">15x3</div>
+            </div>
+            <div class="video-block">
+                <video autoplay muted loop playsinline>
+                    <source src="./videos/video1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="sets-reps">20x4</div>
+            </div>
+            <div class="video-block">
+                <video autoplay muted loop playsinline>
+                    <source src="./videos/video2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="sets-reps">15x3</div>
+            </div>
+            <div class="video-block">
+                <video autoplay muted loop playsinline>
+                    <source src="./videos/video3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="sets-reps">12x3</div>
+            </div>
+            <div class="video-block">
+                <video autoplay muted loop playsinline>
+                <source src="./videos/video4.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="sets-reps">12x3</div>
+            </div>
+            <div class="video-block">
+                <video autoplay muted loop playsinline>
+                    <source src="./videos/video5.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="sets-reps">12x4</div>
+            </div>
+        </div>
+        
+        <div class="grid-item">
+            <div id="countdown">
+                <div id="countdown-number"></div>
+                <svg>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#fff478;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#ffff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#fff478;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle r="10.5vh" cx="12.5vh" cy="12.5vh" stroke="url(#gradient)"></circle>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+var countdownNumberEl = document.getElementById('countdown-number');
+var countdown = 90;
+
+countdownNumberEl.textContent = countdown;
+
+setInterval(function() {
+  countdown = --countdown <= 0 ? 90 : countdown;
+  countdownNumberEl.textContent = countdown;
+}, 1000);
+    </script>
+    </body>
+</html>
