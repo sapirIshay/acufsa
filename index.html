@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+    <head>
+    <meta charset="UTF-8">
+    <style>
 html, body{
     height: 100%;
     width: 100%;
@@ -82,8 +81,7 @@ html, body{
 }
 
 .logo_pic{
-    max-width: 500px;
-    max-height: 200px;
+    margin-top: auto;
     width: 28vh;
     height: 13vh;
 }
@@ -94,7 +92,7 @@ html, body{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: clamp(8vh, 10vw, 14vh);
+  font-size: 10vh;
   font-family: "Gveret Levin AlefAlefAlef";
   color: white;
   text-align: center;
@@ -121,8 +119,8 @@ html, body{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 15px;  /* פחות מרווח בין הוידאו */
-  padding: 30px; /* פחות פנינג */
+  gap: 30px;
+  padding: 60px;
   height: 100%;
   position: relative;
   z-index: 1;
@@ -130,8 +128,8 @@ html, body{
 
 .video-block {
   position: relative;
-  width: 95%;
-  height: 95%;
+  width: 80%;
+  height: 80%;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.4);
@@ -152,7 +150,7 @@ html, body{
   background: rgba(0,0,0,0.8);
   color: #fff478;
   font-family: "Gveret Levin AlefAlefAlef", Arial, sans-serif;
-  font-size: clamp(4vh, 5vw, 5vh);
+  font-size: 3vh;
   font-weight: bold;
   text-align: center;
   padding: 1vh;
@@ -166,16 +164,17 @@ html, body{
 
 /* Label (e.g. תחנה, סט) */
 .label {
-  font-size: clamp(8vh, 10vw, 12vh);
+  font-size: 10vh;
   text-shadow: lemonchiffon 0px 0 10px;
-  font-weight: 400;
+  font-weight: bold;
   font-family: "Gveret Levin AlefAlefAlef";
   color: white;
+  font-weight: 400;
 }
 
 /* Value (e.g. 5, 1) */
 .value {
-  font-size: clamp(12vh, 15vw, 20vh);
+  font-size: 15vh;
   color: #fff478;
   font-weight: bold;
   opacity: 0.9;
@@ -246,84 +245,84 @@ svg circle {
     stroke-dashoffset: 66vh;
   }
 }
-</style>
-<link href="https://db.onlinewebfonts.com/c/2f01ce81ad5d2852012b2d6f46443bf6?family=Gveret+Levin+AlefAlefAlef" rel="stylesheet">
-</head>
-<body>
-<!-- Video background -->
-<video autoplay muted loop id="bg-video">
-<source src="https://cdn.dribbble.com/userupload/16909493/file/original-e6c90943d3d9da57b997c2898244009e.mp4" type="video/mp4">
-</video>
+    </style>
+    <link href="https://db.onlinewebfonts.com/c/2f01ce81ad5d2852012b2d6f46443bf6?family=Gveret+Levin+AlefAlefAlef" rel="stylesheet">
+    </head>
+    <body>
+    <!-- Video background -->
+    <video autoplay muted loop id="bg-video">
+    <source src="https://cdn.dribbble.com/userupload/16909493/file/original-e6c90943d3d9da57b997c2898244009e.mp4" type="video/mp4">
+    </video>
 
-<div class="grid-container">
-    <div class="grid-logo-item">
-        <img src="logo.png" class="logo_pic" alt="Logo">
+    <div class="grid-container">
+        <div class="grid-logo-item">
+            <img src="logo.png" class="logo_pic" alt="Logo">
+        </div>
+        
+        <!-- Video Grid Container -->
+        <div class="video-grid-container">
+            <div class="video-block">
+                <video autoplay muted loop playsinline>
+                    <source src="video0.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="sets-reps">15x3</div>
+            </div>
+            <div class="video-block">
+                <video autoplay muted loop playsinline>
+                    <source src="video1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="sets-reps">20x4</div>
+            </div>
+            <div class="video-block">
+                <video autoplay muted loop playsinline>
+                    <source src="video2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="sets-reps">15x3</div>
+            </div>
+            <div class="video-block">
+                <video autoplay muted loop playsinline>
+                    <source src="video3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="sets-reps">12x3</div>
+            </div>
+            <div class="video-block">
+                <video autoplay muted loop playsinline>
+                <source src="video4.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="sets-reps">12x3</div>
+            </div>
+            <div class="video-block">
+                <video autoplay muted loop playsinline>
+                    <source src="video5.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="sets-reps">12x4</div>
+            </div>
+        </div>
+        
+        <div class="grid-item">
+            <div id="countdown">
+                <div id="countdown-number"></div>
+                <svg>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#fff478;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#ffff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#fff478;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle r="10.5vh" cx="12.5vh" cy="12.5vh" stroke="url(#gradient)"></circle>
+                </svg>
+            </div>
+        </div>
     </div>
-    
-    <!-- Video Grid Container -->
-    <div class="video-grid-container">
-        <div class="video-block">
-            <video autoplay muted loop playsinline>
-                <source src="video0.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="sets-reps">15x3</div>
-        </div>
-        <div class="video-block">
-            <video autoplay muted loop playsinline>
-                <source src="video1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="sets-reps">20x4</div>
-        </div>
-        <div class="video-block">
-            <video autoplay muted loop playsinline>
-                <source src="video2.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="sets-reps">15x3</div>
-        </div>
-        <div class="video-block">
-            <video autoplay muted loop playsinline>
-                <source src="video3.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="sets-reps">12x3</div>
-        </div>
-        <div class="video-block">
-            <video autoplay muted loop playsinline>
-            <source src="video4.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="sets-reps">12x3</div>
-        </div>
-        <div class="video-block">
-            <video autoplay muted loop playsinline>
-                <source src="video5.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="sets-reps">12x4</div>
-        </div>
-    </div>
-    
-    <div class="grid-item">
-        <div id="countdown">
-            <div id="countdown-number"></div>
-            <svg>
-                <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#fff478;stop-opacity:1" />
-                        <stop offset="50%" style="stop-color:#ffff;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#fff478;stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-                <circle r="10.5vh" cx="12.5vh" cy="12.5vh" stroke="url(#gradient)"></circle>
-            </svg>
-        </div>
-    </div>
-</div>
 
-<script>
+    <script>
 var countdownNumberEl = document.getElementById('countdown-number');
 var countdown = 90;
 
@@ -333,6 +332,6 @@ setInterval(function() {
   countdown = --countdown <= 0 ? 90 : countdown;
   countdownNumberEl.textContent = countdown;
 }, 1000);
-</script>
-</body>
+    </script>
+    </body>
 </html>
